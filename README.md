@@ -1,5 +1,5 @@
 # SpERT torchserve
-Spert_torchserve is the Relation Extraction model [(SpERT)Span-based Entity and Relation Transformer](https://github.com/lavis-nlp/spert) API deployed with [pytorch/serve](https://github.com/pytorch/serve)
+Spert_torchserve is the Relation Extraction model [(SpERT)Span-based Entity and Relation Transformer](https://github.com/lavis-nlp/spert) API deployed with [pytorch/serve](https://github.com/pytorch/serve).
 
 ## Install Requirements
 
@@ -8,8 +8,9 @@ pip install -r requirements.txt
 ```
 
 ## Get your pretrained model
-Train your own model with [SpERT](https://github.com/lavis-nlp/spert) or download model trained by CoNLL04 from [Huggingface](https://huggingface.co/Zichuu/spert/tree/main). You can also save your own model at Huggingface.
-Only pytorch_model.bin is required to be archived. [Download it here](https://drive.google.com/file/d/1El0v_0xEblpSRDIQ_6lxI6ZnvxqEYVBa/view?usp=sharing) and save it into model directory.
+Train your own model with [SpERT](https://github.com/lavis-nlp/spert) or use model trained by CoNLL04 from [Huggingface](https://huggingface.co/Zichuu/spert/tree/main). Only pytorch_model.bin is required to be archived. [Download it here](https://drive.google.com/file/d/1El0v_0xEblpSRDIQ_6lxI6ZnvxqEYVBa/view?usp=sharing) and save it into model directory.
+
+You can also save your own model at Huggingface with large file storage.
 
 ## Archive your model
 Before serving model, pack the model and other configs into a .mar file.
@@ -17,10 +18,10 @@ Before serving model, pack the model and other configs into a .mar file.
 ```
 torch-model-archiver --model-name spert --version 1.0 --model-file models.py --serialized-file model/pytorch_model.bin --export-path model_store --extra-files entities.py,input_reader.py,loss.py,prediction.py,sampling.py,conll04_types.json --handler spert_handler
 ```
-This command pack all the needed files in a spert.mar file in model_store fold.
+This command pack all the needed files into a spert.mar file in model_store fold.
 
 ## Serve the model
-Start the service with the command:
+Start the service using the spert.mar with command:
 ```
 torchserve --start --model-store model_store --models my_tc=spert.mar --ncs
 ```
