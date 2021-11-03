@@ -32,5 +32,10 @@ Post the text example "In 1822, the 18th president of the United States, Ulysses
 http://127.0.0.1:8080/predictions/my_tc
 
 A prediction would be returned:
-
+```
 { "tokens": [ "In", "1822", ",", "the", "18th", "president", "of", "the", "United", "States", ",", "Ulysses", "S.", "Grant", ",", "was", "born", "in", "Point", "Pleasant", ",", "Ohio" ], "entities": [ { "type": "Loc", "start": 8, "end": 10 }, { "type": "Peop", "start": 11, "end": 14 }, { "type": "Loc", "start": 18, "end": 22 } ], "relations": [ { "type": "Live_In", "head": 1, "tail": 2 } ] }
+```
+## References
+```
+Markus Eberts, Adrian Ulges. Span-based Joint Entity and Relation Extraction with Transformer Pre-training. 24th European Conference on Artificial Intelligence, 2020.
+```
