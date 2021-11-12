@@ -39,7 +39,9 @@ torchserve --start --model-store model_store --models my_tc=spert.mar --ncs
 ```
 
 To start TAKE model:
+```
 torchserve --start --model-store model_store --models my_tc=spert_TAKE.mar --ncs
+```
 
 ## Test
 To test model trained on CoNLL04, post the text example "In 1822, the 18th president of the United States, Ulysses S. Grant, was born in Point Pleasant, Ohio" to:
