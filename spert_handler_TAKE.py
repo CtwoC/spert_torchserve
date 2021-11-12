@@ -136,4 +136,9 @@ class ModelHandler(object):
                 pred_relations.extend(batch_pred_relations)
 
         model_output = prediction.store_predictions(model_input.documents, pred_entities, pred_relations)
-        return [model_output]
+        new_output=[]
+        for index,output_dic in enumerate(model_output):
+            input_dic={'sentence':input_text[index]}
+            input_dic.update(output_dic)
+            new_output.append(input_dic)
+        return [new_output]
